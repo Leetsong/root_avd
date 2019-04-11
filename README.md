@@ -18,12 +18,13 @@ future Android versions may complicate this process further.
 1. Push `su` and update permissions: you will have to pick the corresponding architecture `$ARCH`. `adb push SuperSU/$ARCH/su /system/xbin/su`, then update permissions: `adb shell  chmod 0755 /system/xbin/su`
 1. Set SELinux Permissive: `adb shell setenforce 0`
 1. Install SuperSU's `su` to system: `adb shell su --install`
-1. Run SuperSU's `su` as daemon. `adb shell su --daemon&`
+1. Run SuperSU's `su` as daemon. `adb shell "su --daemon&"`
 1. Finally, open the SuperSU app on the device, and it will tell you the `su` binary needs to be updated. Accept and use normal installation.
 1. Installation will fail. Don't reboot, just move on. It will still work.
 1. Congratulations! You now have a rooted AVD with SuperSU.
 
 **TIP: Superuser may not always persist after reboot, to fix:**
-1. From a root shell, start `su --daemon&`
+1. Restart adbd as root: `adb root`
+1. Run su as daemom: `adb shell "su --daemon&"`
 1. Root should now work.
 1. Optional: Look for the temporary emulator system image; you can back this up and use it as a patched system.
