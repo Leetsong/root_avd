@@ -23,8 +23,13 @@ future Android versions may complicate this process further.
 1. Installation will fail. Don't reboot, just move on. It will still work.
 1. Congratulations! You now have a rooted AVD with SuperSU.
 
-**TIP: Superuser may not always persist after reboot, to fix:**
+**TIP1: Superuser may not always persist after reboot, to fix:**
 1. Restart adbd as root: `adb root`
 1. Run su as daemom: `adb shell "su --daemon&"`
 1. Root should now work.
 1. Optional: Look for the temporary emulator system image; you can back this up and use it as a patched system.
+
+**TIP2: System image modification may not always persist after emulator closed, to fix:**
+1. Each time start your emulator, remember to use `-writable-system` flag on `emulator` command
+2. To get superuser permission, see **TIP1**
+
